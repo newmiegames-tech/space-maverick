@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum GameState
@@ -39,8 +40,7 @@ public class GameManager : MonoBehaviour
 
         PlayerName = playerName;
         GameState = GameState.Running;
-        // TODO - load game scene
-        Debug.Log("Loading Game Scene");
+        SceneManager.LoadScene(1);
     }
 
     public void EndGame(int score)
