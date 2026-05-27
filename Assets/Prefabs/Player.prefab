@@ -127,6 +127,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 427a1007319261f4894baf374131c694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  _moveSpeed: 0
+  _xBounds: {x: 0, y: 0}
+  _yBounds: {x: 0, y: 0}
+  _attackCooldown: 0.25
+  _projectilePrefab: {fileID: 3785467771893733280, guid: e224eb8b2ac8c5b41889e4f10f08e141, type: 3}
 --- !u!1 &8419755414087928901
 GameObject:
   m_ObjectHideFlags: 0
