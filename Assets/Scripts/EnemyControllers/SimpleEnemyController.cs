@@ -4,7 +4,7 @@ public class SimpleEnemyController : EnemyController
 {
     protected override void ApplyMovement()
     {
-        transform.Translate(Vector3.up * _moveSpeed * Time.deltaTime);
+        _rb.Move(transform.position + Vector3.down * _moveSpeed * Time.deltaTime, transform.rotation);
     }
 
     protected override void FireProjectile()

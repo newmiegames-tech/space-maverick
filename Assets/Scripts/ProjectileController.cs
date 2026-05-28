@@ -2,8 +2,14 @@ using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
-    [SerializeField] private Vector2 _direction;
+    [SerializeField] private Vector3 _direction;
     [SerializeField] private float _speed;
+    private Rigidbody _rb;
+
+    void Start()
+    {
+        _rb = GetComponent<Rigidbody>();
+    }
 
     void Update()
     {
@@ -12,6 +18,9 @@ public class ProjectileController : MonoBehaviour
 
     private void ApplyMovement()
     {
-        transform.Translate(_direction.normalized * _speed * Time.deltaTime);
+        _rb.Move(
+            transform.position + _direction.normalized * _speed * Time.deltaTime,
+            transform.rotation
+        );
     }
 }

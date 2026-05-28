@@ -13,10 +13,19 @@ public abstract class EnemyController : MonoBehaviour
     [SerializeField] private Vector2 _xAttackBounds;
     [SerializeField] private Vector2 _yAttackBounds;
 
+    // Hit Points
+    [SerializeField] private int _hitPoints;
+
+    // Explosion and destruction
+    [SerializeField] private ParticleSystem _explosion;
+    [SerializeField] private float _destroyDelay;
+
+    protected Rigidbody _rb;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        _rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -62,4 +71,45 @@ public abstract class EnemyController : MonoBehaviour
     }
 
     protected abstract void FireProjectile();
+
+    private void OnTriggerEnter(Collider other)
+    {
+        bool tookHit = false;
+
+        // Hit by projectile
+        if (other.name.StartsWith("Projectile"))
+        {
+            tookHit = true;
+
+            // Destroy projectile
+            Destroy(other.gameObject);
+        }
+
+        // Hit by player ship
+        if (other.name.StartsWith("Player"))
+        {
+            tookHit = true;
+        }
+
+        // Lose a hitpoint
+        if (tookHit && _hitPoints > 0)
+        {
+            _hitPoints -= 1;
+
+            // Destroy the ship if hit points exhausted
+            if (_hitPoints <= 0)
+            {
+                _explosion.Play();
+
+                StartCoroutine(nameof(WaitDestroyDelay));
+            }
+        }
+    }
+
+    IEnumerator WaitDestroyDelay()
+    {
+        yield return new WaitForSeconds(_destroyDelay);
+
+        Destroy(gameObject);
+    }
 }

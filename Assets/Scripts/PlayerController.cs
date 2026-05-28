@@ -15,10 +15,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _attackCooldown;
     [SerializeField] GameObject _projectilePrefab;
 
+    private Rigidbody _rb;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        _rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -53,7 +55,7 @@ public class PlayerController : MonoBehaviour
     private void ApplyMovement()
     {
         Vector3 movement = Vector3.right * _moveInput.x + Vector3.up * _moveInput.y;
-        transform.Translate(movement.normalized * _moveSpeed * Time.deltaTime);
+        _rb.Move(transform.position + movement.normalized * _moveSpeed * Time.deltaTime, transform.rotation);
     }
 
     private void ApplyBounds()
