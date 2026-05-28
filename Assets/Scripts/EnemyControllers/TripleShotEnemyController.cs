@@ -4,7 +4,8 @@ public class TripleShotEnemyController : EnemyController
 {
     protected override void ApplyMovement()
     {
-        _rb.Move(transform.position + Vector3.down * _moveSpeed * Time.deltaTime, transform.rotation);
+        Vector3 forwardMovement = transform.rotation * (Vector3.up * _moveSpeed * Time.deltaTime);
+        _rb.Move(transform.position + forwardMovement, transform.rotation);
     }
 
     protected override void FireProjectile()
