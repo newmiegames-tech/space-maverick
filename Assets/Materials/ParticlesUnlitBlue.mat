@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ParticlesUnlit Variant
+  m_Name: ParticlesUnlitBlue
   m_Shader: {fileID: 4800000, guid: 0406db5a14f94604a8c57ccfbc9f3b46, type: 3}
-  m_Parent: {fileID: 2100000, guid: e823cd5b5d27c0f4b8256e7c12ee3e6d, type: 2}
+  m_Parent: {fileID: 2100000, guid: 9fe6385947d88254f9b26c166f3c8df2, type: 2}
   m_ModifiedSerializedProperties: 24
   m_ValidKeywords:
   - _SURFACE_TYPE_TRANSPARENT
@@ -44,9 +44,9 @@ Material:
     - _Surface: 1
     - _ZWrite: 0
     m_Colors:
-    - _BaseColor: {r: 0.25, g: 1, b: 0.9136097, a: 1}
+    - _BaseColor: {r: 0.25098038, g: 0.94261444, b: 1, a: 1}
     - _BaseColorAddSubDiff: {r: -1, g: 1, b: 0, a: 0}
-    - _Color: {r: 0.24999997, g: 1, b: 0.9136097, a: 1}
+    - _Color: {r: 0.25098035, g: 0.94261444, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &2456864101619150338
