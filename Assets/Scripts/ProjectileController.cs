@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
-    [SerializeField] private Vector3 _direction;
     [SerializeField] private float _speed;
     private Rigidbody _rb;
 
@@ -19,7 +18,7 @@ public class ProjectileController : MonoBehaviour
     private void ApplyMovement()
     {
         _rb.Move(
-            transform.position + _direction.normalized * _speed * Time.deltaTime,
+            transform.position + transform.rotation * (Vector3.up * _speed * Time.deltaTime),
             transform.rotation
         );
     }
