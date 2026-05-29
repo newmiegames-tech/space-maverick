@@ -5015,7 +5015,7 @@ MonoBehaviour:
   _hitPoints: 1
   _explosion: {fileID: 6223683151393819779}
   _destroyDelay: 0.75
-  trackSpeed: 1
+  trackSpeed: 3
 --- !u!1001 &7771431411630813149
 PrefabInstance:
   m_ObjectHideFlags: 0

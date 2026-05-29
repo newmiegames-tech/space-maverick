@@ -3,6 +3,7 @@ using UnityEngine;
 public class TrackerEnemyController : EnemyController
 {
     [SerializeField] private float trackSpeed;
+    private bool isTracking = false;
     private GameObject player;
 
     private void Awake()
@@ -12,14 +13,17 @@ public class TrackerEnemyController : EnemyController
 
     protected override void ApplyMovement()
     {
-        Vector3 trackMovement = Vector3.zero;        
-        if (player.transform.position.x > transform.position.x)
+        Vector3 trackMovement = Vector3.zero;    
+        if (isTracking)
         {
-            trackMovement = Vector3.right * trackSpeed * Time.deltaTime;
-        }
-        else if (player.transform.position.x < transform.position.x)
-        {
-            trackMovement = Vector3.left * trackSpeed * Time.deltaTime;
+            if (player.transform.position.x > transform.position.x)
+            {
+                trackMovement = Vector3.right * trackSpeed * Time.deltaTime;
+            }
+            else if (player.transform.position.x < transform.position.x)
+            {
+                trackMovement = Vector3.left * trackSpeed * Time.deltaTime;
+            }
         }
 
         Vector3 forwardMovement = transform.rotation * (Vector3.up * _moveSpeed * Time.deltaTime);
@@ -28,6 +32,9 @@ public class TrackerEnemyController : EnemyController
 
     protected override void FireProjectile()
     {
+        // Start tracking once in firing range
+        isTracking = true;
+
         Instantiate(_projectilePrefab, transform.position, transform.rotation);
     }
 }
