@@ -4853,7 +4853,7 @@ GameObject:
   - component: {fileID: 661055921063265818}
   m_Layer: 0
   m_Name: TripleShotEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4867,7 +4867,7 @@ Transform:
   m_GameObject: {fileID: 7092832971088493410}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 2, y: 7, z: 0}
+  m_LocalPosition: {x: 0, y: 7, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -4966,7 +4966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoundaryChecker
   _xBounds: {x: -10, y: 10}
-  _yBounds: {x: -5, y: 20}
+  _yBounds: {x: -5, y: 30}
   _cleanupAction: 1
 --- !u!54 &3898913576924360985
 Rigidbody:

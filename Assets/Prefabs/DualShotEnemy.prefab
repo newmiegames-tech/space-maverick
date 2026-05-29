@@ -4853,7 +4853,7 @@ GameObject:
   - component: {fileID: 6790635279671855982}
   m_Layer: 0
   m_Name: DualShotEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4867,7 +4867,7 @@ Transform:
   m_GameObject: {fileID: 5573810014670678689}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: -2, y: 7, z: 0}
+  m_LocalPosition: {x: -6, y: 12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4993,7 +4993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoundaryChecker
   _xBounds: {x: -10, y: 10}
-  _yBounds: {x: -5, y: 20}
+  _yBounds: {x: -5, y: 30}
   _cleanupAction: 1
 --- !u!114 &6790635279671855982
 MonoBehaviour:
@@ -5011,19 +5011,23 @@ MonoBehaviour:
   _attackCooldown: 1
   _projectilePrefab: {fileID: 3785467771893733280, guid: 3feb5a24f7e0c5149afbcd49c450192a, type: 3}
   _xAttackBounds: {x: -7.5, y: 7.5}
-  _yAttackBounds: {x: -3, y: 5}
+  _yAttackBounds: {x: -3, y: 6}
   _hitPoints: 3
   _explosion: {fileID: 2398093779575965641}
   _destroyDelay: 1
   _pathNodes:
-  - {x: -2, y: 7, z: 0}
-  - {x: -2, y: 4, z: 0}
-  - {x: 2, y: 4, z: 0}
-  - {x: 2, y: -12, z: 0}
+  - {x: -6, y: 12, z: 0}
+  - {x: -6, y: 6, z: 0}
+  - {x: 6, y: 6, z: 0}
+  - {x: 6, y: 3, z: 0}
+  - {x: 0, y: 3, z: 0}
+  - {x: 0, y: -9, z: 0}
   _pathNodeDurations:
-  - 1.5
   - 2
-  - 8
+  - 4
+  - 1
+  - 2
+  - 4
   _leftProjectileOffset: {x: -0.5, y: 0, z: 0}
   _rightProjectileOffset: {x: 0.5, y: 0, z: 0}
 --- !u!1001 &9114878215995146296

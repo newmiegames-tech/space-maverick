@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -3984729733535181609}
   m_Layer: 0
   m_Name: SimpleEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoundaryChecker
   _xBounds: {x: -10, y: 10}
-  _yBounds: {x: -5, y: 20}
+  _yBounds: {x: -5, y: 30}
   _cleanupAction: 1
 --- !u!114 &8040877925383546
 MonoBehaviour:

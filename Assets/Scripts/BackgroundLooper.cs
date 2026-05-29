@@ -26,7 +26,7 @@ public class BackgroundLooper : MonoBehaviour
         // If background has moved below repeat point, loop back to starting position
         if (transform.position.y < _startPos.y - _repeatHeight)
         {
-            Debug.Log("Looped");
+            //Debug.Log("Looped");
             transform.position = _startPos;
         }
     }
