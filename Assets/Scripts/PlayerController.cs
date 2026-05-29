@@ -13,15 +13,21 @@ public class PlayerController : MonoBehaviour
 
     // Projectile
     private bool _isAttackCoolingDown;
-    [SerializeField] float _attackCooldown;
-    [SerializeField] GameObject _projectilePrefab;
+    [SerializeField] private float _attackCooldown;
+    [SerializeField] private GameObject _projectilePrefab;
+
+    // Health
+    [SerializeField] private HealthCounterController _healthCounterController;
+    [SerializeField] private float _invulnerabilityCooldown;
+    private bool isInvulnerable;
 
     private Rigidbody _rb;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _rb = GetComponent<Rigidbody>();
+        isInvulnerable = false;
+        _rb = GetComponent<Rigidbody>();        
     }
 
     // Update is called once per frame
@@ -79,5 +85,41 @@ public class PlayerController : MonoBehaviour
     private void FireProjectile()
     {
         Instantiate(_projectilePrefab, transform.position, transform.rotation);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        bool tookHit = false;
+
+        // Hit by projectile
+        if (other.name.StartsWith("EnemyProjectile"))
+        {
+            tookHit = true;
+
+            // Destroy projectile
+            Destroy(other.gameObject);
+        }
+
+        // Hit by enemy ship
+        if (other.CompareTag("Enemy"))
+        {
+            tookHit = true;
+        }
+
+        // Lose a hitpoint
+        if (tookHit && !isInvulnerable)
+        {
+            _healthCounterController.AddHealth(-1);    
+            
+            // Enable invulnerability for a short period
+            StartCoroutine(nameof(WaitInvulnerabilityCooldown));
+        }
+    }
+
+    IEnumerator WaitInvulnerabilityCooldown()
+    {
+        isInvulnerable = true;
+        yield return new WaitForSeconds(_invulnerabilityCooldown);
+        isInvulnerable = false;
     }
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 enum ShipType
 {
@@ -74,7 +75,15 @@ public class SpawnManager : MonoBehaviour
             _waveIndex++;
         }
 
-        // TODO wait for no remaining enemies, then trigger victory condition
+        bool doEnemiesRemain = true;
+        while (doEnemiesRemain)
+        {
+            doEnemiesRemain = (GameObject.FindGameObjectWithTag("Enemy") != null);
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        // TODO Game Over (Victory) Screen
+        SceneManager.LoadScene(0);
     }
 
     private void DoSpawnWave(SpawnWave wave)

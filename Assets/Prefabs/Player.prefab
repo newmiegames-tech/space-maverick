@@ -110,7 +110,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -133,6 +133,8 @@ MonoBehaviour:
   _yBounds: {x: 0, y: 0}
   _attackCooldown: 0.25
   _projectilePrefab: {fileID: 3785467771893733280, guid: e224eb8b2ac8c5b41889e4f10f08e141, type: 3}
+  _healthCounterController: {fileID: 0}
+  _invulnerabilityCooldown: 0
 --- !u!54 &3273002410678845486
 Rigidbody:
   m_ObjectHideFlags: 0

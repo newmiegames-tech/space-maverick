@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
 
     public GameState GameState { get; private set; }
     public string PlayerName { get; private set; }
+    public int StartingHealth { get; private set; }
 
     void Awake()
     {
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         GameState = GameState.Stopped;
+        StartingHealth = 3;
     }
 
     public void StartGame(string playerName)

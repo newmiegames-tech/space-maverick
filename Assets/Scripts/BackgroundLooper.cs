@@ -11,8 +11,8 @@ public class BackgroundLooper : MonoBehaviour
         // Store initial position to loop back to
         _startPos = transform.position;
 
-        // Background is tiled 3 high, so repeat after a third
-        _repeatHeight = GetComponent<SpriteRenderer>().size.y / 3;
+        // Background is tiled 3 high, so repeat after moved a tile
+        _repeatHeight = transform.localScale.y * GetComponent<SpriteRenderer>().size.y / 3f;
     }
 
     private void Update()
