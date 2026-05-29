@@ -20,11 +20,16 @@ public abstract class EnemyController : MonoBehaviour
     [SerializeField] private ParticleSystem _explosion;
     [SerializeField] private float _destroyDelay;
 
+    // Score
+    private ScoreboardController _scoreboardController;
+    [SerializeField] private int _score;
+
     protected Rigidbody _rb;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _scoreboardController = GameObject.Find("Scoreboard").GetComponent<ScoreboardController>();
         _rb = GetComponent<Rigidbody>();
     }
 
@@ -99,8 +104,13 @@ public abstract class EnemyController : MonoBehaviour
             // Destroy the ship if hit points exhausted
             if (_hitPoints <= 0)
             {
+                // Add to scoreboard
+                _scoreboardController.AddScore(_score);
+
+                // Play an explosion
                 _explosion.Play();
 
+                // Destroy the object after letting explosion effect play for a bit
                 StartCoroutine(nameof(WaitDestroyDelay));
             }
         }

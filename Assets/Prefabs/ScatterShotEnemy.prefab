@@ -179,6 +179,7 @@ MonoBehaviour:
   _hitPoints: 3
   _explosion: {fileID: 226189592680719712}
   _destroyDelay: 1
+  _score: 10
   _scatterAngles:
   - 90
   - 60

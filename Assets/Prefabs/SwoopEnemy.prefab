@@ -179,6 +179,7 @@ MonoBehaviour:
   _hitPoints: 1
   _explosion: {fileID: 6527824274574730647}
   _destroyDelay: 0.75
+  _score: 2
   _swoopDuration: 2.8
 --- !u!1 &8485802352249933500
 GameObject:

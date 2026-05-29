@@ -5015,6 +5015,7 @@ MonoBehaviour:
   _hitPoints: 3
   _explosion: {fileID: 2398093779575965641}
   _destroyDelay: 1
+  _score: 10
   _pathNodes:
   - {x: -6, y: 12, z: 0}
   - {x: -6, y: 6, z: 0}
