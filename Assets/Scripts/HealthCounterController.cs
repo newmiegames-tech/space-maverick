@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class HealthCounterController : MonoBehaviour
 {
     public int Health {  get; private set; }
     [SerializeField] private List<GameObject> _healthCounters;
+    [SerializeField] private GameObject _defeatDisplay;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -40,9 +40,10 @@ public class HealthCounterController : MonoBehaviour
         
         // Health all gone
         if (Health == 0)
-        {
-            // TODO Game Over (Loss) Screen
-            SceneManager.LoadScene(0);
+        {            
+            // End game, defeat
+            GameManager.Instance.EndGame();
+            _defeatDisplay.SetActive(true);
         }
     }
 }

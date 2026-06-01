@@ -11,5 +11,17 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 647aa432b45be0447b41a517776e5978
+  - enabled: 1
+    path: Assets/Scenes/HallOfFame.unity
+    guid: 9f6818f24de743845b190166275f1f99
+  - enabled: 1
+    path: Assets/Scenes/MissionStart.unity
+    guid: 741d39a886e7d384280a6da1f31542b1
+  - enabled: 1
+    path: Assets/Scenes/MissionDefeat.unity
+    guid: 8de74aead4bdc93409206cfa066a982a
+  - enabled: 1
+    path: Assets/Scenes/MissionVictory.unity
+    guid: 24160cd9c17757d478a6c8671fbcb990
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

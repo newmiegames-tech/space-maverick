@@ -37,17 +37,27 @@ public class GameManager : MonoBehaviour
 
     public void StartGame(string playerName)
     {        
-        if (playerName.Length <= 1)
-            return;
-
-        PlayerName = playerName;
+        if (playerName.Length > 1)
+        {
+            PlayerName = playerName;            
+        }
+        else
+        {
+            PlayerName = "Unknown";
+        }
+        
         GameState = GameState.Running;
         SceneManager.LoadScene(1);
     }
 
-    public void EndGame(int score)
+    public void EndGame()
     {
         GameState = GameState.Stopped;
+
+        Time.timeScale = 0f;
+
+        ScoreboardController score = GameObject.Find("Scoreboard").GetComponent<ScoreboardController>();
+        // TODO save high score       
     }
 
     public void ShowHallOfFame()

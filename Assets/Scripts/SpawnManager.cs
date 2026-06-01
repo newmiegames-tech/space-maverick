@@ -43,6 +43,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private int _waveIndex;
     private float _enemiesRemainCheckDelay;
     private SpawnWaveList _waves;
+    [SerializeField] private GameObject _victoryDisplay;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -75,6 +76,7 @@ public class SpawnManager : MonoBehaviour
             _waveIndex++;
         }
 
+        // Wait until no more enemies remain
         bool doEnemiesRemain = true;
         while (doEnemiesRemain)
         {
@@ -82,8 +84,9 @@ public class SpawnManager : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
 
-        // TODO Game Over (Victory) Screen
-        SceneManager.LoadScene(0);
+        // End game, victory
+        GameManager.Instance.EndGame();
+        _victoryDisplay.SetActive(true);
     }
 
     private void DoSpawnWave(SpawnWave wave)
