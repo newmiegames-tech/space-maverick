@@ -3,6 +3,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+public enum GameScene
+{
+    Title,
+    Game,
+    HallOfFame,
+    MissionStart,
+    MissionDefeat,
+    MissionVictory
+}
+
 public enum GameState
 {
     Running,
@@ -47,7 +57,7 @@ public class GameManager : MonoBehaviour
         }
         
         GameState = GameState.Running;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene((int)GameScene.MissionStart);
     }
 
     public void EndGame()
@@ -62,8 +72,7 @@ public class GameManager : MonoBehaviour
 
     public void ShowHallOfFame()
     {
-        // TODO - load hall of fame scene
-        Debug.Log("Loading Hall Of Fame Scene");
+        SceneManager.LoadScene((int)GameScene.HallOfFame);
     }
 
     public void QuitGame()
