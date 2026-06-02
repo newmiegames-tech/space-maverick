@@ -5007,7 +5007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74ccf8f06dc9a274b9a28831f64879c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TripleShotEnemyController
-  _moveSpeed: 2.8
+  _moveSpeed: 5.6
   _attackCooldown: 2
   _projectilePrefab: {fileID: 3785467771893733280, guid: 3feb5a24f7e0c5149afbcd49c450192a, type: 3}
   _xAttackBounds: {x: -7.5, y: 7.5}

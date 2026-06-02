@@ -127,8 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 811a84dbbf93b5f489b23b94b93f6aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileController
-  _direction: {x: 0, y: -1, z: 0}
-  _speed: 24
+  _speed: 48
 --- !u!114 &1691870755301609305
 MonoBehaviour:
   m_ObjectHideFlags: 0

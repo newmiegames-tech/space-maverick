@@ -3114,7 +3114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9188522117406001906, guid: 6432b6ccf68f18d4391e72e983b51426, type: 3}
       propertyPath: _moveSpeed
-      value: 12
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 9188522117406001906, guid: 6432b6ccf68f18d4391e72e983b51426, type: 3}
       propertyPath: _xBounds.x
