@@ -14,6 +14,12 @@ public class SceneLoadButton : MonoBehaviour
 
     public void LoadScene()
     {
+        // Destroy GameManager if transition back to title this ensures a clean restart
+        if (_sceneIndex == (int)GameScene.Title)
+        {
+            Destroy(GameManager.Instance.gameObject);
+        }
+
         SceneManager.LoadScene(_sceneIndex);
     }
 }

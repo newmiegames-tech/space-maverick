@@ -82,8 +82,15 @@ public class GameManager : MonoBehaviour
         {
             PlayerName = _anonPlayerName;
         }
-        
+
+        // Save state to persist player name
+        SaveState();
+
+        // Set game state to running
         GameState = GameState.Running;
+        Time.timeScale = 1f;
+
+        // Load mission start scene
         SceneManager.LoadScene((int)GameScene.MissionStart);
     }
 
@@ -96,7 +103,7 @@ public class GameManager : MonoBehaviour
         // Update high scores
         UpdateHighScores();
 
-        // Save state for next time
+        // Save state to persist high scores
         SaveState();
     }
 
