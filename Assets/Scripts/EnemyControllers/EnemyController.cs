@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public abstract class EnemyController : MonoBehaviour
 {
@@ -26,11 +27,14 @@ public abstract class EnemyController : MonoBehaviour
 
     protected Rigidbody _rb;
 
+    private SfxManager _sfxManager;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _scoreboardController = GameObject.Find("Scoreboard").GetComponent<ScoreboardController>();
         _rb = GetComponent<Rigidbody>();
+        _sfxManager = GameObject.Find("SfxManager").GetComponent<SfxManager>();
     }
 
     // Update is called once per frame
@@ -64,6 +68,7 @@ public abstract class EnemyController : MonoBehaviour
         _isAttackCoolingDown = true;
 
         FireProjectile();
+        _sfxManager.Play(SfxType.EnemyShoot);
 
         StartCoroutine(nameof(WaitAttackCooldown));
     }
@@ -107,11 +112,17 @@ public abstract class EnemyController : MonoBehaviour
                 // Add to scoreboard
                 _scoreboardController.AddScore(_score);
 
-                // Play an explosion
+                // Play explosion visual and sound effects
                 _explosion.Play();
+                _sfxManager.Play(SfxType.EnemyExplode);
 
                 // Destroy the object after letting explosion effect play for a bit
                 StartCoroutine(nameof(WaitDestroyDelay));
+            }
+            else
+            {
+                // Play sound effect for enemy getting hit
+                _sfxManager.Play(SfxType.EnemyHit);
             }
         }
     }

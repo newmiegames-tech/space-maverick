@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,15 +18,27 @@ public class PlayerController : MonoBehaviour
     // Health
     [SerializeField] private HealthCounterController _healthCounterController;
     [SerializeField] private float _invulnerabilityCooldown;
+    [SerializeField] private GameObject _defeatDisplay;
+    [SerializeField] private ParticleSystem _explosion;
     private bool isInvulnerable;
 
     private Rigidbody _rb;
+
+    private SfxManager _sfxManager;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         isInvulnerable = false;
-        _rb = GetComponent<Rigidbody>();        
+        _rb = GetComponent<Rigidbody>();
+
+        // SFX manager wont exist on title scene
+        GameObject sfxOb = GameObject.Find("SfxManager");
+        if (sfxOb != null )
+        {
+            _sfxManager = sfxOb.GetComponent<SfxManager>();
+        }        
     }
 
     // Update is called once per frame
@@ -85,6 +96,9 @@ public class PlayerController : MonoBehaviour
     private void FireProjectile()
     {
         Instantiate(_projectilePrefab, transform.position, transform.rotation);
+
+        // Play sound effect for player projectile
+        _sfxManager.Play(SfxType.PlayerShoot);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -109,10 +123,31 @@ public class PlayerController : MonoBehaviour
         // Lose a hitpoint
         if (tookHit && !isInvulnerable)
         {
-            _healthCounterController.AddHealth(-1);    
-            
+            _healthCounterController.AddHealth(-1);
+
+            if (_healthCounterController.Health > 0)
+            {
+                // Play sound effect for getting hit
+                _sfxManager.Play(SfxType.PlayerHit);
+            }
+            else
+            {
+                // Play explosion visual and sound effects
+                _sfxManager.Play(SfxType.PlayerExplode);
+                _explosion.Play();
+            }
+
             // Enable invulnerability for a short period
             StartCoroutine(nameof(WaitInvulnerabilityCooldown));
+
+            // Health all gone
+            if (_healthCounterController.Health <= 0)
+            {
+                // End game, defeat                            
+                gameObject.SetActive(false);
+                _defeatDisplay.SetActive(true);
+                GameManager.Instance.EndGame();
+            }
         }
     }
 
