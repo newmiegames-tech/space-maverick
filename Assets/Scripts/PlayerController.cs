@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
     private void ApplyMovement()
     {
         Vector3 movement = Vector3.right * _moveInput.x + Vector3.up * _moveInput.y;
-        _rb.Move(transform.position + movement.normalized * _moveSpeed * Time.deltaTime, transform.rotation);
+        _rb.Move(transform.position + movement.normalized * _moveSpeed, transform.rotation);
     }
 
     private void ApplyBounds()

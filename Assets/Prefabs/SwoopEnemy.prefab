@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ddb7c06031301e479c623eb8c77207f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwoopEnemyController
-  _moveSpeed: 6.4
+  _moveSpeed: 0.032
   _attackCooldown: 0.5
   _projectilePrefab: {fileID: 3785467771893733280, guid: 3feb5a24f7e0c5149afbcd49c450192a, type: 3}
   _xAttackBounds: {x: -7.5, y: 7.5}

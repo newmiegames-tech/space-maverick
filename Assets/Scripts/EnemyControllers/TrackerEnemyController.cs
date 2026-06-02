@@ -18,15 +18,15 @@ public class TrackerEnemyController : EnemyController
         {
             if (player.transform.position.x > transform.position.x)
             {
-                trackMovement = Vector3.right * trackSpeed * Time.deltaTime;
+                trackMovement = Vector3.right * trackSpeed;
             }
             else if (player.transform.position.x < transform.position.x)
             {
-                trackMovement = Vector3.left * trackSpeed * Time.deltaTime;
+                trackMovement = Vector3.left * trackSpeed;
             }
         }
 
-        Vector3 forwardMovement = transform.rotation * (Vector3.up * _moveSpeed * Time.deltaTime);
+        Vector3 forwardMovement = transform.rotation * (Vector3.up * _moveSpeed);
         _rb.Move(transform.position + forwardMovement + trackMovement, transform.rotation);
     }
 
