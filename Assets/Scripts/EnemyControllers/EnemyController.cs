@@ -2,12 +2,14 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.VFX;
 
+// INHERITANCE: Each enemy has a controller that derives from this one
 public abstract class EnemyController : MonoBehaviour
 {
     // Movement
     [SerializeField] protected float _moveSpeed;
 
     // Projectile
+    // ENCAPSULATION: Attack cooldown is private and encapsulated in this base class
     private bool _isAttackCoolingDown;
     [SerializeField] private float _attackCooldown;
     [SerializeField] protected GameObject _projectilePrefab;
@@ -44,6 +46,7 @@ public abstract class EnemyController : MonoBehaviour
         CheckAttack();
     }
 
+    // ABSTRACTION: ApplyMovement is abstract. Each enemy implements its unique movement in a derived controller class.
     protected abstract void ApplyMovement();
 
     private void CheckAttack()
