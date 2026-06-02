@@ -26,7 +26,7 @@ public class SwoopEnemyController : EnemyController
         // Move normally starting swoop
         if (_swoopState != SwoopState.Swooping)
         {
-            Vector3 forwardMovement = transform.rotation * (Vector3.up * _moveSpeed * Time.deltaTime);
+            Vector3 forwardMovement = transform.rotation * (Vector3.up * _moveSpeed);
             _rb.Move(transform.position + forwardMovement, transform.rotation);
         }
         else

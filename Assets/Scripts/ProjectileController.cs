@@ -18,7 +18,7 @@ public class ProjectileController : MonoBehaviour
     private void ApplyMovement()
     {
         _rb.Move(
-            transform.position + transform.rotation * (Vector3.up * _speed * Time.deltaTime),
+            transform.position + transform.rotation * (Vector3.up * _speed),
             transform.rotation
         );
     }
