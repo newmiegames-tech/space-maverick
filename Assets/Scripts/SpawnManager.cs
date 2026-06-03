@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 
 enum ShipType
 {
@@ -47,21 +47,39 @@ public class SpawnManager : MonoBehaviour
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
-        LoadWaves();
+    {        
         StartCoroutine(nameof(DoSpawnWaves));
     }
 
-    private void LoadWaves()
+    IEnumerator LoadWaves()
     {
         // Load the waves json file into the in memory waves object
         string path = Path.Combine(Application.streamingAssetsPath, _wavesFile);
-        string json = File.ReadAllText(path);
-        _waves = JsonUtility.FromJson<SpawnWaveList>(json);
+        //string json = File.ReadAllText(path);
+
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(path))
+        {
+            // Request the file from the hosting server
+            yield return webRequest.SendWebRequest();
+
+            if (webRequest.result == UnityWebRequest.Result.Success)
+            {
+                // Process your data here
+                string json = webRequest.downloadHandler.text;
+                _waves = JsonUtility.FromJson<SpawnWaveList>(json);
+            }
+            else
+            {
+                Debug.LogError("Error loading file: " + webRequest.error);
+            }
+        }
     }
 
     IEnumerator DoSpawnWaves()
     {
+        // Load the waves from file
+        yield return LoadWaves();
+
         // Spawn waves until no more
         while (_waveIndex < _waves.Waves.Count)
         {
